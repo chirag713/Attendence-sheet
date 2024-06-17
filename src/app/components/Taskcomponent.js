@@ -57,8 +57,9 @@ const Taskcomponent = ({ task, deletetaskparent }) => {
                 </div>
                 <div className="flex justify-between mt-3">
                     <p className='text-left font-semibold mb-2'>  Detail : <span>{conten}</span></p>
-                    <p className='text-right font-bold mb-2 pl-2'>Performance : <span>{task.score}</span></p>
+                    
                 </div>
+    <p className='text-right font-bold mb-2 pl-2'>Performance : <span>{task.score}</span></p>
             </div>
 
             {editing ?
