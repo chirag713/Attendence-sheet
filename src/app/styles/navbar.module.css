@@ -1,0 +1,128 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    background-color: #a5aac2;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.header .mobile a {
+    padding-top: 5px;
+}
+
+.mobile {
+    display: none;
+    align-items: center;
+}
+
+.close {
+    display: none;
+}
+
+.header .mobile a img {
+    width: 30px;
+    /* padding-top: 20px; */
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+.navbar li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+.navbar li a:hover {
+    color: #088178;
+}
+
+.navbar li a.active {
+    color: #088178;
+}
+
+.navbar li a img {
+    width: 30%;
+}
+
+.navbar li a.active::after,
+.navbar li a:hover::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background-color: #088178;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+
+
+
+.scrolling {
+    background-color: rgba(227, 230, 243, 0.9);
+}
+
+@media (max-width: 500px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        height: 400vh;
+        width: 200px;
+        background-color: #a5aac2;
+        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+        padding: 80px 0 0 10px;
+        transition: 2s ease;
+    }
+
+    .navbar li {
+        margin-bottom: 25px;
+    }
+
+    .navbar.active {
+        right: 0px;
+    }
+
+    .mobile {
+        display: flex;
+    }
+
+    .mobile i {
+        color: #1a1a1a;
+        font-size: 24px;
+        padding-left: 20px;
+    }
+
+    .close {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        font-size: 24px;
+        color: #222;
+        display: block;
+    }
+}
