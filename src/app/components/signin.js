@@ -59,7 +59,7 @@ const SignForm = () => {
 
 
     return (
-        <div className={styles.wrapper + (isSignUp ? ` ${styles.animateSignUp}` : ` ${styles.animateSignIn}`)}>
+        <div className={`m-2 ${styles.wrapper} ${isSignUp ? styles.animateSignUp : styles.animateSignIn}`} >
 
             <div className={`${styles.formWrapper} ${styles.signIn}`}>
                 <form>
