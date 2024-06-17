@@ -80,10 +80,10 @@
 
 
 .scrolling {
-    background-color: rgba(227, 230, 243, 0.9);
+    background-color: rgba(165, 170, 194, 0.7);
 }
 
-@media (max-width: 500px) {
+@media (max-width: 560px) {
     .navbar {
         flex-direction: column;
         align-items: flex-start;

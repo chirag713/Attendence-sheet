@@ -1,0 +1,365 @@
+/* ProfileCard.module.css */
+
+.body {
+    height: 100vh;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    font-family: 'Raleway', sans-serif;
+    background: #E0F7FA
+}
+
+.card {
+    position: relative;
+    width: 300px;
+}
+
+.card .cardBorders {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.card .cardBorders .borderTop {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    background: hsl(240, 31%, 25%);
+    transform: translateX(-100%);
+    animation: slide-in-horizontal 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+.card .cardBorders .borderRight {
+    position: absolute;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: hsl(240, 31%, 25%);
+    transform: translateY(100%);
+    animation: slide-in-vertical 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+.card .cardBorders .borderBottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: hsl(240, 31%, 25%);
+    transform: translateX(100%);
+    animation: slide-in-horizontal-reverse 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+.card .cardBorders .borderLeft {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: hsl(240, 31%, 25%);
+    transform: translateY(-100%);
+    animation: slide-in-vertical-reverse 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+.card .cardContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 15px 40px 15px;
+    background: #25235c;
+    box-shadow: 0 0px 0.6px rgba(0, 0, 0, 0.028), 0 0px 1.3px rgba(0, 0, 0, 0.04), 0 0px 2.5px rgba(0, 0, 0, 0.05), 0 0px 4.5px rgba(0, 0, 0, 0.06), 0 0px 8.4px rgba(0, 0, 0, 0.072), 0 0px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    border-radius: 30px;
+    transform: scale(0.6);
+    border-bottom: 10px solid #f7e01d;
+    animation: bump-in 0.5s 0.8s forwards;
+}
+
+
+
+.card .cardContent .avatar {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: scale(0.6);
+    border: 3px solid #25235c;
+    border-right-color: #f7e01d;
+    border-bottom-color: #f7e01d;
+    border-top-color: #f7e01d;
+    border-radius: 50%;
+    padding: 10px;
+    animation: bump-in 0.5s 1s forwards;
+}
+
+.card .cardContent .username {
+    position: relative;
+    font-size: 25px;
+    margin: 0;
+    color: transparent;
+    line-height: 40px;
+    animation: fill-text-white 1.2s 2s forwards;
+}
+
+.card .cardContent .username::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: black;
+    background: #f7e01d;
+    transform: scaleX(0);
+    transform-origin: left;
+    border-radius: 20px;
+    animation: slide-in-out 1.2s 1.2s cubic-bezier(0.75, 0, 0, 1) forwards;
+}
+
+.card .cardContent .designation {
+    position: relative;
+    line-height: 40px;
+    font-size: 17px;
+    margin: 0;
+    color: transparent;
+    background: #6b62b9;
+    padding: 0 10px 0 10px;
+    border-radius: 30px;
+    margin: 6px 0 6px 0;
+    animation: fill-text-white 1.2s 2s forwards;
+}
+
+.card .cardContent .designation::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: black;
+    background: #f7e01d;
+    border-radius: 20px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: slide-in-out 1.2s 1.2s cubic-bezier(0.75, 0, 0, 1) backwards;
+}
+
+.card .cardContent .sheet {
+    position: relative;
+    line-height: 40px;
+    font-size: 17px;
+    margin: 0;
+    color: transparent;
+    padding: 0 10px 0 10px;
+    border-radius: 30px;
+    margin: 6px 0 6px 0;
+    animation: fill-text-white 1.2s 2s forwards;
+}
+
+.card .cardContent .sheet::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: black;
+    background: #f7e01d;
+    border-radius: 20px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: slide-in-out 1.2s 1.2s cubic-bezier(0.75, 0, 0, 1) backwards;
+}
+
+
+.card .cardContent .bio {
+    position: relative;
+    line-height: 25px;
+    font-size: 14px;
+    margin: 0;
+    color: transparent;
+    animation: fill-text-white 1.2s 2s forwards;
+    margin: 6px 0 7px 0;
+}
+
+.card .cardContent .bio::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: black;
+    background: #f7e01d;
+    border-radius: 20px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: slide-in-out 1.2s 1.2s cubic-bezier(0.75, 0, 0, 1) forwards;
+}
+
+.card .cardContent .socialIcons {
+    display: flex;
+    margin-top: 15px;
+}
+
+.card .cardContent .socialIcons .socialIcon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0 15px;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.card .cardContent .socialIcons .socialIcon:nth-child(1)::before {
+    animation-delay: 2.1s;
+}
+
+.card .cardContent .socialIcons .socialIcon:nth-child(1)::after {
+    animation-delay: 2.2s;
+}
+
+.card .cardContent .socialIcons .socialIcon:nth-child(1) i {
+    animation-delay: 2.3s;
+}
+
+.card .cardContent .socialIcons .socialIcon:nth-child(2)::before {
+    animation-delay: 2.2s;
+}
+
+.card .cardContent .socialIcons .socialIcon:nth-child(2)::after {
+    animation-delay: 2.3s;
+}
+
+.card .cardContent .socialIcons .socialIcon:nth-child(2) i {
+    animation-delay: 2.4s;
+}
+
+.card .cardContent .socialIcons .socialIcon:nth-child(3)::before {
+    animation-delay: 2.3s;
+}
+
+.card .cardContent .socialIcons .socialIcon:nth-child(3)::after {
+    animation-delay: 2.4s;
+}
+
+.card .cardContent .socialIcons .socialIcon:nth-child(3) i {
+    animation-delay: 2.5s;
+}
+
+.card .cardContent .socialIcons .socialIcon::before,
+.card .cardContent .socialIcons .socialIcon::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    transform: scale(0);
+}
+
+.card .cardContent .socialIcons .socialIcon::before {
+    background: #f7f1e3;
+    animation: scale-in 0.5s cubic-bezier(0.75, 0, 0, 1) forwards;
+}
+
+.card .cardContent .socialIcons .socialIcon::after {
+    background: #fff;
+    animation: scale-in 0.5s cubic-bezier(0.75, 0, 0, 1) forwards;
+}
+
+.card .cardContent .socialIcons .socialIcon i {
+    z-index: 1;
+    transform: scale(0);
+    animation: scale-in 0.5s cubic-bezier(0.75, 0, 0, 1) forwards;
+    color: #6b62b7;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+@keyframes bump-in {
+    50% {
+        transform: scale(1.05);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slide-in-horizontal {
+    50% {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes slide-in-horizontal-reverse {
+    50% {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slide-in-vertical {
+    50% {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes slide-in-vertical-reverse {
+    50% {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes slide-in-out {
+    50% {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    50.1% {
+        transform-origin: right;
+    }
+
+    100% {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+}
+
+@keyframes fill-text-white {
+    to {
+        color: white;
+    }
+}
+
+@keyframes scale-in {
+    to {
+        transform: scale(1);
+    }
+}

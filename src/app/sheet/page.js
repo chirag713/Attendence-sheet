@@ -76,6 +76,18 @@ const Page = () => {
 
         updateDateTime();
 
+        const now = new Date();
+        const options = { timeZone: 'Asia/Kolkata', hour12: false };
+        const currentTime = new Intl.DateTimeFormat('en-IN', options).format(now);
+        const currentHour = now.toLocaleString('en-IN', { hour: '2-digit', timeZone: 'Asia/Kolkata', hour12: false });
+
+        if (currentHour < 18 || currentHour >= 19) {
+            toast.warning("Task can only be added between 6 PM and 7 PM IST.", {
+                position: "top-center"
+            });
+            return;
+        }
+
         if (!data.task) {
             toast.warning("Task field is required !!..", {
                 position: "top-center"
@@ -89,7 +101,7 @@ const Page = () => {
 
         const newData = {
             ...data,
-            addeddate: `${formattedDate} ${formattedTime}`
+            addeddate: formattedDate
         };
 
         console.log(newData);
@@ -110,13 +122,14 @@ const Page = () => {
     }
 
     return (
-        <div>
+        <div >
             <Header />
 
             <div className='flex justify-center'>
                 
                 <div className='py-5 ali min-w-[70vw] max-w-[800px] px-10 sm:px-5'>
                     <h1 className='text-3xl text-center'>Update today's Attendance</h1>
+                    <h2 className='text-center'>{formattedDate} {formattedTime}</h2>
                     <form action="#" className='mt-5' onSubmit={taskformsubmited}>
                         <div className='mt-3'>
                             <label htmlFor="user_task" className='block mb-2 text-2xl font-medium'>Task</label>

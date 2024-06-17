@@ -55,9 +55,7 @@ const SignForm = () => {
             });
         }
     }
-
-
-
+    
     return (
         <div className={`m-2 ${styles.wrapper} ${isSignUp ? styles.animateSignUp : styles.animateSignIn}`} >
 

@@ -8,8 +8,6 @@ import { toast } from 'react-toastify';
 
 const Attendence = () => {
 
-
-
     const router = useRouter();
     const [user, setUser] = useState(null);
 

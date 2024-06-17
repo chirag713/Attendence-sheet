@@ -1,13 +1,15 @@
 // components/Header.js
 "use client";
 import { useState, useEffect } from 'react';
+
 import Image from 'next/image';
-// import logo from "../Assets/logo.png";
 import { IoIosClose } from "react-icons/io";
 import { HiBars3 } from "react-icons/hi2";
 
 import styles from "../styles/navbar.module.css";
 import { useRouter } from 'next/navigation';
+
+import avatar from "../img/logo.png";
 
 const Header = () => {
 
@@ -56,7 +58,7 @@ const Header = () => {
         <>
             <header className={`${scrolling ? styles.scrolling : ""} ${styles.header}`}  >
                 <a href="#">
-                    <Image className={styles.logo} src="" alt='BasicBrush Studios Logo' />
+                    <Image className={styles.logo} src={avatar} alt='BasicBrush Studios Logo' />
                 </a>
                 <div>
                     <ul className={`${styles.navbar} ${navActive ? styles.active : ''}`}>
@@ -66,7 +68,7 @@ const Header = () => {
                             login ? <li onClick={() => router.push("/profile")}>Profile</li> : <li onClick={() => router.push("/")}>Login</li>
                         }
                         {
-                            login ? <li onClick={() => router.push("/sheet")}>Sheet</li> : <li></li>
+                            login ? <li onClick={() => router.push("/sheet")}>Add Attendence</li> : <li></li>
                         }
                         {
                             login ? <li onClick={logout}>Logout</li> : <li></li>
