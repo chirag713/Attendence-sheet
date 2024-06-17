@@ -114,9 +114,7 @@ const Page = () => {
             <Header />
 
             <div className='flex justify-center'>
-                <h1>
-                    {formattedDate} {formattedTime}
-                </h1>
+                
                 <div className='py-5 ali min-w-[70vw] max-w-[800px] px-10 sm:px-5'>
                     <h1 className='text-3xl text-center'>Update today's Attendance</h1>
                     <form action="#" className='mt-5' onSubmit={taskformsubmited}>
