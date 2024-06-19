@@ -6,13 +6,40 @@ import Image from 'next/image';
 
 import { useRouter } from 'next/navigation';
 
+import { deleteObject, ref } from "firebase/storage";
+
+
 import avatar from "../img/avatar.jpg";
+import AddImage from './Addimage';
+import { imageDb } from './Config';
+import { toast } from 'react-toastify';
+import { Updateuser } from '../services/userservice';
 
 const ProfileCard = () => {
 
 
   const router = useRouter();
   const [user, setUser] = useState(null);
+  const [imageUpdated, setImageUpdated] = useState(false);
+
+  const [data, setData] = useState({
+    profileurl: ""
+  });
+
+
+  const updateUserUrl = async () => {
+    try {
+      const result = await Updateuser(user?._id, data);
+
+      delete result.password;
+
+      localStorage.setItem('username', JSON.stringify(result));
+      onchangeimage(true);
+    } catch (error) {
+
+    }
+  }
+
 
   useEffect(() => {
     let userData = localStorage.getItem("username");
@@ -28,6 +55,48 @@ const ProfileCard = () => {
     }
   }, [router]);
 
+
+  useEffect(() => {
+
+    let userData = localStorage.getItem("username");
+    if (userData) {
+      try {
+        userData = JSON.parse(userData);
+        setUser(userData);
+      } catch (e) {
+        console.error("Error parsing JSON from localStorage", e);
+      }
+    } else {
+      router.push("/");
+    }
+    setImageUpdated(false);
+  }, [imageUpdated])
+
+  const onchangeimage = (x) => {
+    setImageUpdated(x);
+  }
+
+  const deleteImage = async () => {
+    if (user?.profileurl) {
+      const imageRef = ref(imageDb, user.profileurl);
+      try {
+        await deleteObject(imageRef);
+
+        toast.success("Image deleted successfully!", {
+          position: "top-center"
+        });
+
+        updateUserUrl();
+
+      } catch (error) {
+        console.error("Error deleting image: ", error);
+        toast.error("Error deleting image!", {
+          position: "top-center"
+        });
+      }
+    }
+  }
+
   return (
     <div className={styles.body}>
       <div className={styles.card}>
@@ -38,29 +107,20 @@ const ProfileCard = () => {
           <div className={styles.borderLeft}></div>
         </div>
         <div className={styles.cardContent}>
-          <Image className={styles.avatar} alt="Avatar" src={avatar} style={
-            {
-              width: '50%',
-              height: "200px"
-            }
+          {
+            user?.profileurl ?
+              <>
+                <img src={user.profileurl} className={styles.avatar} alt="Avatar" />
+                <p className={`${styles.sheet} bg-red-800`} onClick={deleteImage} >Delete Image</p>
+              </> :
+              <AddImage onchangeimage={onchangeimage} />
           }
-          />
+
           <p className={styles.username}>{user?.name || "No user found"} </p>
           <p className={styles.designation}>{user?.role || "Add Your Role"}</p>
           <p className={styles.bio}>Joining Date: {user?.joiningdate || "Add your Joining date"}</p>
           <p className={styles.bio}>Unique ID: {user?._id}</p>
-          {/* <div className={styles.socialIcons}>
-            <a className={styles.socialIcon} href="https://www.instagram.com/keyframe_effects_youtube/" target="_blank" rel="noopener noreferrer">
-              <i className={`fa fa-instagram ${styles.icon}`}></i>
-            </a>
-            <a className={styles.socialIcon} href="https://www.youtube.com/@KeyframeEffects" target="_blank" rel="noopener noreferrer">
-              <i className={`fa fa-youtube-play ${styles.icon}`}></i>
-            </a>
-            <a className={styles.socialIcon} href="https://twitter.com/keyframeeffects" target="_blank" rel="noopener noreferrer">
-              <i className={`fa fa-twitter ${styles.icon}`}></i>
-            </a>
-          </div> */}
-          <p className={`${styles.sheet} bg-red-800`}  onClick={()=>router.push("/showattendence")}>Show Total Sheet</p>
+          <p className={`${styles.sheet} bg-red-800`} onClick={() => router.push("/showattendence")}>Show Total Sheet</p>
 
         </div>
       </div>

@@ -12,8 +12,6 @@ import { useRouter } from 'next/navigation';
 import avatar from "../img/logo.png";
 
 const Header = () => {
-
-
     const router = useRouter();
     const [navActive, setNavActive] = useState(false);
     const [scrolling, setScrolling] = useState(false);
