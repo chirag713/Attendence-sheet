@@ -14,7 +14,6 @@ export async function PUT(request, { params }) {
         const { userid } = params;
         const { profileurl, newPassword } = await request.json();
 
-
         // Find the task by ID
         let taska = await User.findById(userid);
 
@@ -27,9 +26,10 @@ export async function PUT(request, { params }) {
             });
         }
 
-        if (profileurl) {
-            taska.profileurl = profileurl;
 
+
+        if (profileurl!=null) {
+            taska.profileurl = profileurl;
             console.log(profileurl);
         }else if (newPassword){
             taska.password = newPassword;
@@ -40,6 +40,7 @@ export async function PUT(request, { params }) {
 
         console.log(taska);
         const updatedTask = await taska.save();
+        // return NextResponse.json();
 
         return NextResponse.json(updatedTask);
 

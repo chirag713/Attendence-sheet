@@ -36,9 +36,18 @@ const Page = () => {
         if (user?.profileurl) {
             const imageRef = ref(imageDb, user.profileurl);
             try {
-                await deleteObject(imageRef);
+               
+
+                console.log(data);
+                
 
                 const result = await Updateuser(user?._id, data);
+                console.log(result);
+                return;
+
+                await deleteObject(imageRef);
+
+                console.log(result);
 
                 delete result.password;
 
