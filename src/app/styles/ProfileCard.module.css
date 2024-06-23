@@ -1,7 +1,7 @@
 /* ProfileCard.module.css */
 
 .body {
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0;
     display: grid;
     place-items: center;
@@ -11,7 +11,7 @@
 
 .card {
     position: relative;
-    width: 300px;
+    width: 330px;
 }
 
 .card .cardBorders {

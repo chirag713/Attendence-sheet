@@ -74,19 +74,18 @@ const Page = () => {
     const taskformsubmited = async (event) => {
         event.preventDefault();
 
-        updateDateTime();
-
         const now = new Date();
-        const options = { timeZone: 'Asia/Kolkata', hour12: false };
-        const currentTime = new Intl.DateTimeFormat('en-IN', options).format(now);
-        const currentHour = now.toLocaleString('en-IN', { hour: '2-digit', timeZone: 'Asia/Kolkata', hour12: false });
+        const hour = now.getHours();
+        const minute = now.getMinutes();
 
-        if (currentHour < 18 || currentHour >= 19) {
+        if (hour < 18 || (hour === 19 && minute > 0) || hour > 19) {
             toast.warning("Task can only be added between 6 PM and 7 PM IST.", {
                 position: "top-center"
             });
             return;
         }
+
+        updateDateTime();
 
         if (!data.task) {
             toast.warning("Task field is required !!..", {
@@ -101,7 +100,7 @@ const Page = () => {
 
         const newData = {
             ...data,
-            addeddate: formattedDate
+            addeddate: formattedDate // Set the formatted date here
         };
 
         console.log(newData);
@@ -122,20 +121,20 @@ const Page = () => {
     }
 
     return (
-        <div >
-            <Header />
-
-            <div className='flex justify-center'>
-                
-                <div className='py-5 ali min-w-[70vw] max-w-[800px] px-10 sm:px-5'>
-                    <h1 className='text-3xl text-center'>Update today's Attendance</h1>
-                    <h2 className='text-center'>{formattedDate} {formattedTime}</h2>
-                    <form action="#" className='mt-5' onSubmit={taskformsubmited}>
-                        <div className='mt-3'>
-                            <label htmlFor="user_task" className='block mb-2 text-2xl font-medium'>Task</label>
-                            <textarea className='w-full p-3 rounded-3xl ps-2 text-white bg-gray-800 focus:ring-gray-400 border border-gray-600'
+        <div className='min-h-screen bg-gray-100 flex flex-col'>
+            <Header  />
+            <br />
+            <div className='flex-grow  flex justify-center items-center'>
+                <div className=' bg-blue-200 shadow-lg rounded-lg p-8 w-full max-w-xl'>
+                    <h1 className='text-3xl text-center font-bold mb-4'>Update today's Attendance</h1>
+                    <h2 className='text-center text-gray-600 mb-6'>{formattedDate} {formattedTime}</h2>
+                    <form action="#" className='space-y-6' onSubmit={taskformsubmited}>
+                        <div>
+                            <label htmlFor="user_task" className='block mb-2 text-xl font-medium text-gray-700'>Task</label>
+                            <textarea
+                                className='w-full p-3 rounded-lg border border-gray-300 focus:ring color focus:ring-indigo-200 focus:border-indigo-500'
                                 type="text"
-                                placeholder="Enter your today\'s task"
+                                placeholder="Enter your today's task"
                                 id="user_task"
                                 onChange={(event) => {
                                     setData({
@@ -146,11 +145,12 @@ const Page = () => {
                                 value={data.task}
                             />
                         </div>
-                        <div className='mt-3'>
-                            <label htmlFor="user_details" className='block mb-2 text-2xl font-medium'>Details</label>
-                            <textarea className='w-full p-3 rounded-3xl ps-2 text-white bg-gray-800 focus:ring-gray-400 border border-gray-600'
+                        <div>
+                            <label htmlFor="user_details" className='block mb-2 text-xl font-medium text-gray-700'>Details</label>
+                            <textarea
+                                className='w-full p-3 rounded-lg border border-gray-300 focus:ring focus:ring-indigo-200 color focus:border-indigo-500'
                                 type="text"
-                                placeholder="Enter details of today\'s task"
+                                placeholder="Enter details of today's task"
                                 id="user_details"
                                 onChange={(event) => {
                                     setData({
@@ -161,9 +161,11 @@ const Page = () => {
                                 value={data.details}
                             />
                         </div>
-                        <div className='mt-4 flex justify-center'>
-                            <button type='submit' className='bg-green-600 py-2 px-3 rounded-lg hover:bg-green-800'>Add task</button>
-                            <button type='button' className='bg-red-600 ms-3 py-2 px-3 rounded-lg hover:bg-red-800'
+                        <div className='flex justify-center space-x-4'>
+                            <button type='submit' className='bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600'>Add task</button>
+                            <button
+                                type='button'
+                                className='bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600'
                                 onClick={() => {
                                     setData({
                                         task: "",
@@ -172,12 +174,16 @@ const Page = () => {
                                         addeddate: ""
                                     })
                                 }}
-                            >Reset</button>
+                            >
+                                Reset
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
+            <br />
         </div>
+        
     )
 }
 

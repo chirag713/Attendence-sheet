@@ -10,6 +10,7 @@ const Page = () => {
   return (
     <div className=' min-h-screen pb-2 color'>
       <Header />
+      <br />
       <ProfileCard/>
       <br /><br />
       <TodaysAttendence/>

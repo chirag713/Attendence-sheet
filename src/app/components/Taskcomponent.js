@@ -80,7 +80,7 @@ const Taskcomponent = ({ task, deletetaskparent }) => {
     };
 
     return (
-        <div className={`  my-3 shadow-lg mb-1 rounded hoverable-div `} style={{ border: '1px solid black' }} >
+        <div className={` my-3 shadow-lg mb-1 rounded hoverable-div `} style={{ border: '1px solid black' }} >
             <div className='p-3'>
                 <div className="flex justify-between">
                     <h1 className='text-2xl font-semibold'> Date: {task.addeddate.substring(0, 10)}</h1>

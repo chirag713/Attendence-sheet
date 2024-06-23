@@ -69,6 +69,9 @@ const Header = () => {
                             login ? <li onClick={() => router.push("/sheet")}>Add Attendence</li> : <li></li>
                         }
                         {
+                            login ? <li onClick={()=>router.push("/editprofile")}>Edit profile</li> : <li></li>
+                        }
+                        {
                             login ? <li onClick={logout}>Logout</li> : <li></li>
                         }
 

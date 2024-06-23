@@ -93,11 +93,11 @@ const TodaysAttendence = () => {
         <h1 className='text-3xl mb-3 font-bold'>{show ? "Your Recent Work" : ""}</h1>
         {tasks.map((task) => (
           check(task) && (
-            <Taskcomponent
-              task={task}
-              key={task._id}
-              deletetaskparent={deletetaskparent}
-            />
+              <Taskcomponent
+                task={task}
+                key={task._id}
+                deletetaskparent={deletetaskparent}
+              />
           )
         ))}
       </div>

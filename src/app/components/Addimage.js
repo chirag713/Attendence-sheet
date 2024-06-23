@@ -80,7 +80,7 @@ const AddImage = ({onchangeimage}) => {
             delete result.password;
 
             localStorage.setItem('username', JSON.stringify(result));
-            onchangeimage(true);
+            router.push("/profile");
         } catch (error) {
             toast.error("Something went wrong!", {
                 position: "top-center"

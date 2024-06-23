@@ -23,6 +23,11 @@
 //     });
 
 
+//     const [recipient, setRecipient] = useState('');
+//     const [subject, setSubject] = useState('Forget Password OTP');
+//     const [message, setMessage] = useState('');
+
+
 
 //     const submitlogindata = async (e) => {
 //         e.preventDefault();
@@ -66,11 +71,35 @@
 //         })
 //     }
 
+
+//     const handleSubmit = async (e) => {
+//         e.preventDefault();
+//         // setStatus('Sending...');
+
+//         // const res = await fetch('/api/sendEmail', {
+//         //   method: 'POST',
+//         //   headers: {
+//         //     'Content-Type': 'application/json',
+//         //   },
+//         //   body: JSON.stringify({ recipient, subject, text: message }),
+//         // });
+
+//         // const data = await res.json();
+//         // if (res.status === 200) {
+//         //   setStatus('Email sent successfully');
+//         // } else {
+//         //   setStatus(`Error: ${data.message}`);
+//         // }
+//     };
+
 //     const sendotptouser = (e) => {
 //         e.preventDefault();
 //         console.log(logindata.email);
 //         let otprandom = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
 //         console.log(otprandom);
+//         setMessage(`Your OTP is ${otprandom}`);
+//         setRecipient(logindata.email);
+//         handleSubmit();
 //     }
 
 //     return (

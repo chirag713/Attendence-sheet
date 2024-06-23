@@ -17,9 +17,15 @@ export async function deletetaskcall(taskId) {
     return result
 }
 
-export async function updatetasklike(taskid,data) {
+export async function updatetasklike(taskid, data) {
     console.log(data);
-    const result= await httpaxious.put(`/api/tasks/${taskid}`,data).then((response) => response.data);
+    const result = await httpaxious.put(`/api/tasks/${taskid}`, data).then((response) => response.data);
     return result
-  }
-  
+}
+
+
+export async function gettask(taskId) {
+    console.log(taskId);
+    const result = await httpaxious.get(`/api/gettask/${taskId}`).then((response) => response.data);
+    return result
+}

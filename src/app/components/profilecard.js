@@ -1,18 +1,9 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/ProfileCard.module.css'
-
 import Image from 'next/image';
-
 import { useRouter } from 'next/navigation';
-
-import { deleteObject, ref } from "firebase/storage";
-
-
 import avatar from "../img/avatar.jpg";
-import AddImage from './Addimage';
-import { imageDb } from './Config';
-import { toast } from 'react-toastify';
 import { Updateuser } from '../services/userservice';
 
 const ProfileCard = () => {
@@ -76,27 +67,6 @@ const ProfileCard = () => {
     setImageUpdated(x);
   }
 
-  const deleteImage = async () => {
-    if (user?.profileurl) {
-      const imageRef = ref(imageDb, user.profileurl);
-      try {
-        await deleteObject(imageRef);
-
-        toast.success("Image deleted successfully!", {
-          position: "top-center"
-        });
-
-        updateUserUrl();
-
-      } catch (error) {
-        console.error("Error deleting image: ", error);
-        toast.error("Error deleting image!", {
-          position: "top-center"
-        });
-      }
-    }
-  }
-
   return (
     <div className={styles.body}>
       <div className={styles.card}>
@@ -108,20 +78,13 @@ const ProfileCard = () => {
         </div>
         <div className={styles.cardContent}>
           {
-            user?.profileurl ?
-              <>
-                <img src={user.profileurl} className={styles.avatar} alt="Avatar" />
-                <p className={`${styles.sheet} bg-red-800`} onClick={deleteImage} >Delete Image</p>
-              </> :
-              <AddImage onchangeimage={onchangeimage} />
+            user?.profileurl ? <img src={user.profileurl} className={styles.avatar} alt="Avatar" /> : <Image className={styles.avatar} alt="Avatar" src={avatar} />
           }
-
           <p className={styles.username}>{user?.name || "No user found"} </p>
           <p className={styles.designation}>{user?.role || "Add Your Role"}</p>
           <p className={styles.bio}>Joining Date: {user?.joiningdate || "Add your Joining date"}</p>
           <p className={styles.bio}>Unique ID: {user?._id}</p>
           <p className={`${styles.sheet} bg-red-800`} onClick={() => router.push("/showattendence")}>Show Total Sheet</p>
-
         </div>
       </div>
     </div>
