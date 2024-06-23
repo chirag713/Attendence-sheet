@@ -43,7 +43,6 @@ const Page = () => {
 
                 const result = await Updateuser(user?._id, data);
                 console.log(result);
-                return;
 
                 await deleteObject(imageRef);
 
