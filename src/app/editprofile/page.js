@@ -27,7 +27,7 @@ const Page = () => {
             } catch (e) {
                 console.error("Error parsing JSON from localStorage", e);
             }
-        }else{
+        } else {
             router.push("/");
         }
     }, []);
@@ -36,10 +36,10 @@ const Page = () => {
         if (user?.profileurl) {
             const imageRef = ref(imageDb, user.profileurl);
             try {
-               
+
 
                 console.log(data);
-                
+
 
                 const result = await Updateuser(user?._id, data);
                 console.log(result);
@@ -67,18 +67,27 @@ const Page = () => {
     }
 
     return (
-        <div >
-            <Header/>
+        <div className='color min-h-screen' >
+            <Header />
             <br />
             <Profileedit />
-            <div className="mt-5">
+            {/* <div className="mt-5">
                 {
                     user?.profileurl ? (
                         <button className=" bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={deleteImage}>Delete Image</button>
                     ) : (
                         <AddImage />
                     )}
+            </div> */}
+            <div className="mt-5">
+                {
+                    user?.profileurl ? (
+                        <></>
+                    ) : (
+                        <AddImage />
+                    )}
             </div>
+            <br />
         </div>
     );
 }

@@ -34,12 +34,15 @@ const AddImage = ({onchangeimage}) => {
     const handleChange = (e) => {
         const selectedImage = e.target.files[0];
 
+        
+
         if (selectedImage && selectedImage.size > 1024 * 1024) { // 1MB = 1024 * 1024 bytes
             setError("File size should be less than 1MB");
             setImage(null);
         } else {
             setError("");
             setImage(selectedImage);
+            console.log(selectedImage);
         }
     }
 
@@ -95,7 +98,7 @@ const AddImage = ({onchangeimage}) => {
     }, [imageURL]);
 
     return (
-        <div className="max-w-md mx-auto mt-10 p-4 border rounded-lg shadow-lg">
+        <div className="max-w-md md bg-slate-200 mx-auto mt-10 p-4 border rounded-lg shadow-lg">
             <form>
                 <input
                     type="file"

@@ -85,9 +85,9 @@ const Profileedit = () => {
                         required
                     />
                 </div>
-                <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mr-2">Save</button>
-                <button type="button" className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 mr-2" onClick={handleReset}>Reset</button>
-                <button type="button" className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600" onClick={handleChangePassword}>Change Password</button>
+                <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded m-2 hover:bg-blue-600 ">Save</button>
+                <button type="button" className="bg-gray-500 text-white py-2 px-4 rounded m-2 hover:bg-gray-600 " onClick={handleReset}>Reset</button>
+                <button type="button" className="bg-red-500 text-white py-2 px-4 rounded m-2 hover:bg-red-600" onClick={handleChangePassword}>Change Password</button>
             </form>
         </div>
     );
